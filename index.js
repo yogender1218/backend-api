@@ -4,13 +4,15 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./db/db');
-
+const uploadRoute = require('./routes/upload.routes');
+const portfolioRoute = require('./routes/portfolio.routes');
 dotenv.config();
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+
 
 // Routes Import
 const authRoutes = require('./routes/auth.routes');
@@ -21,6 +23,8 @@ const cardRoutes = require('./routes/card.routes');
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/cards', cardRoutes);
+app.use('/api', uploadRoute);
+app.use('/api/portfolio', portfolioRoute);
 
 // Connect to MongoDB
 connectDB();

@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    match: [/^\d{10}$/, 'Phone number galat hai'] 
+    match: [/^\d{10}$/, 'Wrong Phone number'] 
   },
   password: {
     type: String,
@@ -26,12 +26,12 @@ const userSchema = new mongoose.Schema({
   },
   confirmPassword: {
     type: String,
-    required: [true, 'Confirm Password dena zaroori hai'],
+    required: [true, 'Confirm Password necessory'],
     validate: {
       validator: function(value) {
         return value === this.password; 
       },
-      message: 'Passwords match nahi karte 😥'
+      message: 'Passwords did not match 😥'
     },
     select: false // 👈 Ye magic line
   },

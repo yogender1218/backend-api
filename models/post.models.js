@@ -13,14 +13,14 @@ const postSchema = new mongoose.Schema({
   caption: {
     type: String,
     trim: true,
-    maxlength: 500, // Caption ka length limit
+    maxlength: 500, // Caption ki max length 500 characters
   },
   hashtags: [{
     type: String,
     trim: true
   }],
   imageUrl: {
-    type: String, // Jo bhi image ka URL ya server path hoga
+    type: String, // Image ka URL store karne ke liye
     required: false
   },
   likes: {
@@ -32,7 +32,7 @@ const postSchema = new mongoose.Schema({
     default: 0
   }
 }, {
-  timestamps: true // createdAt aur updatedAt apne aap create hoga
+  timestamps: true 
 });
 
 const Post = mongoose.model('Post', postSchema);
